@@ -6,44 +6,44 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Budget from './components/Budget';
 
 // Add code to import the other components here under
+import Remaining from './components/Remaining';
 import ExpenseTotal from './components/ExpenseTotal';
 import ExpenseItem from './components/ExpenseItem';
 import AllocationForm from './components/AllocationForm';
-import Remaining from './components/Remaining';
+
 import { AppProvider } from './context/AppContext';
 import ExpenseList from './components/ExpenseList';
-
-//import { AppProvider } from './context/AppContext';
 const App = () => {
     return (
         <AppProvider>
-            <div className='container' id='main'>
-                <h1 className='mt-3' id='title'>Company's Budget Allocation</h1>
-                <div>
-                    <div className='row mt-3' id='board'>
+            <div className='container'>
+                <h1 className='mt-3'>Company's Budget Allocation</h1>
+                    <div>
+                    <div className='row mt-3'>
                     {/* Budget component */}
-                    <div className='col-sm' id='budget'>
+                    <div className='col-sm'>
                         <Budget />
                     </div>
                     {/* Remaining component */}
-                    <div className='col-sm' id='remaining'>
+                    <div className='col-sm'>
                         <Remaining />
                     </div>
                     {/* ExpenseTotal component */}
-                    <div className='col-sm' id='exptotal'>
+                    <div className='col-sm'>
                         <ExpenseTotal />
                     </div>
-                </div>           
+                    </div>   
+                           
                     {/* ExpenseList component */}
-                    <div className='col-sm' id='explist'>
+                    <div className='col-sm'>
                         <ExpenseList />
                     </div>
                     {/* ExpenseItem component */}
-                    <div className='col-sm' id='expitem'>
+                    <div className='col-sm'>
                         <ExpenseItem />
                     </div>
                     {/* AllocationForm component */}
-                    <div className='col-sm' id='form'>
+                    <div className='col-sm'>
                         <AllocationForm />
                     </div>       
 
