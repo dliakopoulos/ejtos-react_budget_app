@@ -12,15 +12,17 @@ const AllocationForm = (props) => {
         const newValue = event.target.value;
         if (/^\d*$/.test(newValue)) {
             setValue(newValue);
+            setCost(newValue); // Update cost with the numeric value
         }
     };
     const submitEvent = () => {
 
-        if (cost > remaining) {
-            alert("The value cannot exceed remaining funds  £" + remaining);
-            setCost("");
-            return;
-        }
+        //moved this part further down
+        // if (cost > remaining) {
+        //     alert("The value cannot exceed remaining funds  £" + remaining);
+        //     setCost("");
+        //     return;
+        // }
 
         const expense = {
             name: name,
@@ -32,6 +34,12 @@ const AllocationForm = (props) => {
                 payload: expense,
             });
         } else {
+            //moved the check here and it seems to work fine for now
+            if (cost > remaining) {
+                alert("The value cannot exceed remaining funds  £" + remaining);
+                setCost("");
+                return;
+            }
             dispatch({
                 type: 'ADD_EXPENSE',
                 payload: expense,
@@ -65,22 +73,13 @@ const AllocationForm = (props) => {
                         <option value="Reduce" name="Reduce">Reduce</option>
                     </select>
 
-                    <span style={{ "position": "relative", "right": "-20px" }}> {currency} </span>
-
-                    {/* <input
+                    <span style={{ "position": "relative", "right": "-20px" }}> {currency} <input
                         type="text"
                         value={value}
                         onChange={handleChange}
-                    /> */}
-                    {/* doesn't accept letters, but add/reduce costs does not work */}
-                    <input
-                        required='required'
-                        type='text'
-                        id='cost'
-                        value={value}
-                        style={{ marginLeft: '2rem', size: 10 }}
-                        onChange={handleChange}>
-                    </input>
+                    /> </span>
+
+
 
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
                         Save
